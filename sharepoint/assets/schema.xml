@@ -1,0 +1,80 @@
+
+<List xmlns:ows="Microsoft SharePoint" Title="Announcements" EnableContentTypes="TRUE" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/Announcements" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+  <MetaData>
+    <ContentTypes>
+      <ContentType ID="0x01" Name="Item" Group="List Content Types" Description="Create a new list item."  Overwrite="TRUE" FeatureId="{d725a6e2-53f9-40f6-897a-d0e6a05f9588}">
+        <Folder TargetName="Item" />
+        <FieldRefs>
+          <FieldRef Name="LinkTitleNoMenu"></FieldRef>
+          <FieldRef Name="LinkTitle"></FieldRef>
+          <FieldRef Name="Title"/>
+          <FieldRef  ID="{ad708af2-0d23-43e8-aced-9f6b90dab513}" Name="Details" DisplayName="Details"/>
+           <FieldRef  ID="{0f4511ac-abe2-440a-b248-9f27a31674a6}" Name="IconName" DisplayName="IconName"/>
+            <FieldRef ID="{cd49904c-a453-4ae1-b97c-a41348c8e8ff}" Name="NewsUrl" DisplayName="NewsUrl"/>
+             <FieldRef  ID="{B34A7173-5AB7-4ABC-812B-EF8D0386498F}" Name="NewsOrder" DisplayName="NewsOrder"/>
+              <FieldRef  ID="{82b176f3-17d6-48c3-ac4d-1ef8fbeac946}" Name="BackgroundColor" DisplayName="BackgroundColor"/>
+        </FieldRefs>
+      </ContentType>
+    </ContentTypes>
+    <Fields>
+      <Field ID="{2C5C4E9D-91D8-4995-8B08-20F323E42DF2}" Name="LinkTitle" DisplayName="Title" Type="Text"></Field>
+      <Field ID="{D9B62993-78E7-45D0-BD1A-5DAE2C87E84A}" Name="LinkTitleNoMenu" DisplayName="Title" Type="Text"></Field>
+      <Field ID="{34124B16-F636-4894-92C1-22BDCAA6FAFE}" Name="Title" DisplayName="Title" Type="Text" Required="TRUE"></Field>
+      <Field ID="{ad708af2-0d23-43e8-aced-9f6b90dab513}" Name="Details" DisplayName="Details" Type ="Note"></Field>
+       <Field ID="{0f4511ac-abe2-440a-b248-9f27a31674a6}" Name="IconName" DisplayName="IconName" Type ="Text"></Field>
+       <Field ID="{cd49904c-a453-4ae1-b97c-a41348c8e8ff}" Name="NewsUrl" DisplayName="NewsUrl" Type ="Text"></Field>
+          <Field ID="{B34A7173-5AB7-4ABC-812B-EF8D0386498F}" Name="NewsOrder" DisplayName="NewsOrder" Type ="Number" Decimals="0"
+                Min="1"
+                Max="10"></Field>
+      <Field ID="{82b176f3-17d6-48c3-ac4d-1ef8fbeac946}"
+         Name="BackgroundColor"
+         DisplayName="BackgroundColor"
+         Type="Choice"
+         Required="FALSE" >
+        <CHOICES>
+        <CHOICE>#407855</CHOICE>
+        <CHOICE>#A4262C</CHOICE>
+        <CHOICE>#FFC83D</CHOICE>
+        <CHOICE>#f3f3f3</CHOICE>
+        <CHOICE>#990000</CHOICE>
+        <CHOICE>#330000</CHOICE>
+        <CHOICE>#008080</CHOICE>
+        <CHOICE>#004d4d</CHOICE>
+        <CHOICE>#336699</CHOICE>
+        <CHOICE>#264d73</CHOICE>
+        <CHOICE>#19334d</CHOICE>
+          <CHOICE>#004d00</CHOICE>
+            <CHOICE>#003300</CHOICE>
+              <CHOICE>#cc6600</CHOICE>
+                <CHOICE>#4d0099</CHOICE>
+        </CHOICES>
+</Field>
+    </Fields>
+    <Views>
+      <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="$Resources:core,objectiv_schema_mwsidcamlidC24;" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/images/generic.png" Url="AllItems.aspx">
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <JSLink>clienttemplates.js</JSLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <Toolbar Type="Standard" />
+        <ViewFields>
+          <FieldRef Name="LinkTitle"></FieldRef>
+          <FieldRef Name="Details"></FieldRef>
+          <FieldRef Name="IconName"></FieldRef>
+          <FieldRef Name="NewsUrl"></FieldRef>
+           <FieldRef Name="NewsOrder"></FieldRef>
+          <FieldRef Name="BackgroundColor"></FieldRef> 
+        </ViewFields>
+        <Query>
+          <OrderBy>
+            <FieldRef Name="ID" />
+          </OrderBy>
+        </Query>
+      </View>
+    </Views>
+     <Forms>
+      <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+ </MetaData>
+</List>

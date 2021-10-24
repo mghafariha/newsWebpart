@@ -1,0 +1,26 @@
+<List xmlns:ows="Microsoft SharePoint" Title="Site Pages" EnableContentTypes="TRUE" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Sitepages" BaseType="0" xmlns="http://schemas.microsoft.com/sharepoint/">
+  <MetaData>
+    <ContentTypes>
+     <ContentType ID="0x0101" Name="Document" Group="Library Content Types" Description="Create a new list item."  Overwrite="TRUE" FeatureId="{d722a6e2-53f9-40f6-897a-d0e6a05f9588}"  >
+        <Folder TargetName="Forms/Document" />
+        <FieldRefs>
+             <FieldRef  ID="{065e12e4-22a5-4708-89ec-3b5017f5a9a9}" Name="SliderDisplayOrder" DisplayName="SliderDisplayOrder"/>   
+        </FieldRefs>
+      </ContentType>
+       <ContentTypeRef ID="0x0101">
+        <Folder TargetName="Forms/Document" />
+      </ContentTypeRef>
+      <ContentTypeRef ID="0x0120" />
+    </ContentTypes>
+    <Fields>
+          <Field ID="{065e12e4-22a5-4708-89ec-3b5017f5a9a9}" Name="SliderDisplayOrder" DisplayName="SliderDisplayOrder" Type ="Number" Decimals="0"
+                Min="1"
+                Max="10"></Field>
+  
+    </Fields>
+    <Views>
+    </Views>
+      <Forms>
+      </Forms>
+ </MetaData>
+</List>

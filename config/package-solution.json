@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "news-web-part-client-side-solution",
+    "id": "ca5c0de6-32f0-4695-936a-954d81cad8d9",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    },
+    "features": [{
+      "title": "news-Annoncements-solution",
+      "description": "news-Annoncements-solution",
+      "id": "433d792a-ad6f-44d1-abd5-daf51307d491",
+      "version": "2.0.0.0",
+      "assets": {        
+        "elementManifests": [
+          "elements.xml"
+        ],
+        "elementFiles":[
+          "schema.xml",
+          "newsSchema.xml"
+        ]
+      }
+    }]
+  },
+  "paths": {
+    "zippedPackage": "solution/news-web-part.sppkg"
+  }
+}

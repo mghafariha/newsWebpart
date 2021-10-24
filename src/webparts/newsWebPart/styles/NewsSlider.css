@@ -1,0 +1,26 @@
+.carousel .slide .legend{
+    position: absolute;
+  bottom: 40px;
+  left: 50%;
+  margin-left: -45%;
+  width: 90%;
+  border-radius: 10px;
+ background-color: transparent;
+  color: #fff;
+  padding: 10px;
+  font-size: 14px;
+  text-align: left;
+  opacity: .75;
+  }
+  .carousel-root{
+    height:100%!important;
+  }
+  .carousel-root ,.carousel ,.carousel .slider-wrapper ,.carousel .slider-wrapper.axis-horizontal .slider {
+    height:100%!important;
+}
+.carousel .slider-wrapper.axis-horizontal .slider {
+    height:100%!important
+}
+.carousel, .carousel-root, .carousel .slider-wrapper, .carousel .slider-wrapper.axis-horizontal .slider {
+    height: 100%!important;
+}
