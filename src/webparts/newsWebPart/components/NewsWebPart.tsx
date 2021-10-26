@@ -34,7 +34,9 @@ export default class NewsWebPart extends React.Component<INewsWebPartProps, INew
     const r = await web();
    
       //AuthorId ,BannerImageUrl ,Created,Title,SliderDisplayOrder,Description,OData__TopicHeader,FirstPublishedDate
-     const newsItems = await web.lists.getByTitle('Site Pages').items.filter('SliderDisplayOrder ne 0').select(`AuthorId,Author/Title,BannerImageUrl ,Created,Title,SliderDisplayOrder,FirstPublishedDate,OData__TopicHeader,FileLeafRef`).expand(`Author`).orderBy("SliderDisplayOrder",false).top(this.props.numberOfDisplayNews).get();
+     let newsItems = await web.lists.getByTitle('Site Pages').items.filter('SliderDisplayOrder ne 0 and SliderDisplayOrder ne null').select(`AuthorId,Author/Title,BannerImageUrl ,Created,Title,SliderDisplayOrder,FirstPublishedDate,OData__TopicHeader,FileLeafRef`).expand(`Author`).orderBy("SliderDisplayOrder",true).top(this.props.numberOfDisplayNews).get();
+     newsItems = newsItems.sort((a, b) => (a.SliderDisplayOrder > b.SliderDisplayOrder ? 1: -1));
+    console.log('newsItem',newsItems);
      const news=newsItems.map((a)=>({title:a.Title,bannerImageUrl :a.BannerImageUrl.Url,authorTitle:a.Author.Title ,created:a.FirstPublishedDate,sliderDisplayOrder:a.SliderDisplayOrder,topicHeader:a.OData__TopicHeader,url:`${this.props.newsSiteUrl}/SitePages/${a.FileLeafRef}`})) as INews[]
      this.setState({...this.state,newsList:news});
     //

@@ -10,7 +10,7 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 ];
 
 const NewsSlider=(props)=>{
-   
+   console.log('slides',props.newsList);
     const formattedDate=(date)=>(date.getUTCDate()+" " + monthNames[date.getMonth()]+', ' + date.getUTCFullYear());
       
   return(
@@ -19,14 +19,21 @@ const NewsSlider=(props)=>{
     <div style={{ backgroundImage: `url(${pic})` }} className={styles.image}>
       
        </div> */}
-       <Carousel infinteloop
-                 autoplay
-               
-              infiniteLoop={true}
+       <Carousel   autoPlay={true}
+       
               showStatus={false}
               showThumbs={false}
               dynamicHeight={true}
-              >
+             
+              stopOnHover={true}
+              interval={2000} 
+              showArrows={true}
+              showIndicators={true}               
+            useKeyboardArrows={true}
+           
+            transitionTime={2}
+            >
+              
                   {
                    props.newsList.map((a,index)=>{
                                                                             
