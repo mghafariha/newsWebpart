@@ -61,7 +61,7 @@
     cursor: pointer;
 }
  .annoncementText {
-    flex: 7;
+    flex: 10;
     margin-top: 5px;
     text-align: justify;
     margin-right: 10px;

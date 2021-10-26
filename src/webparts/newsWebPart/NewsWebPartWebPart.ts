@@ -19,10 +19,11 @@ const customStyleUrl: any = require('./styles/style.css');
 
 export interface INewsWebPartWebPartProps {
   description: string;
-  newsSiteUrl:string
-  numberOfDisplayAnnoncements:number;
-  numberOfDisplayNews:number;
-  cssUrl:string;
+  newsSiteUrl: string
+  numberOfDisplayAnnoncements: number;
+  numberOfDisplayNews: number;
+  cssUrl: string;
+  sliderInterval: number;
 }
 
 export default class NewsWebPartWebPart extends BaseClientSideWebPart<INewsWebPartWebPartProps> {
@@ -32,20 +33,20 @@ export default class NewsWebPartWebPart extends BaseClientSideWebPart<INewsWebPa
       NewsWebPart,
       {
         description: this.properties.description,
-        numberOfDisplayAnnoncements:this.properties.numberOfDisplayAnnoncements ||3,
-        numberOfDisplayNews:this.properties.numberOfDisplayNews||3,
-        newsSiteUrl:this.properties.newsSiteUrl,
-        cssUrl:this.properties.cssUrl
-
+        numberOfDisplayAnnoncements: this.properties.numberOfDisplayAnnoncements || 3,
+        numberOfDisplayNews: this.properties.numberOfDisplayNews || 3,
+        newsSiteUrl: this.properties.newsSiteUrl,
+        cssUrl: this.properties.cssUrl,
+        sliderInterval: this.properties.sliderInterval
       }
     );
 
     ReactDom.render(element, this.domElement);
   }
   protected async onInit(): Promise<void> {
-    
-    this.properties.cssUrl? SPComponentLoader.loadCss(this.context.pageContext.site.absoluteUrl +this.properties.cssUrl):SPComponentLoader.loadCss(customStyleUrl);
- 
+
+    this.properties.cssUrl ? SPComponentLoader.loadCss(this.context.pageContext.site.absoluteUrl + this.properties.cssUrl) : SPComponentLoader.loadCss(customStyleUrl);
+
 
     return super.onInit().then(_ => {
       sp.setup({
@@ -84,6 +85,11 @@ export default class NewsWebPartWebPart extends BaseClientSideWebPart<INewsWebPa
                   max: 10,
                   step: 1
                 }),
+                ,
+                PropertyPaneTextField('sliderInterval', {
+                  label: "Slider Interval",
+                  placeholder: '2'
+                }),
                 PropertyPaneSlider('numberOfDisplayAnnoncements', {
                   label: 'Please Enter Number of Display Annoncements: ',
                   min: 1,
@@ -92,9 +98,9 @@ export default class NewsWebPartWebPart extends BaseClientSideWebPart<INewsWebPa
                 }),
                 PropertyPaneTextField('cssUrl', {
                   label: "NewsAnnoncement Css",
-                  placeholder:'Example : /siteassets/style.css'
+                  placeholder: 'Example : /siteassets/style.css'
                 })
-                
+
               ]
             }
           ]
