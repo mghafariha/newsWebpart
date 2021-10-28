@@ -3,14 +3,12 @@ import * as React from 'react';
 import { useState , useEffect } from 'react';
 import Annoncement from './Annoncement';
 const Annoncements=(props)=>{
-  
     const [annoncements,chengeAnnonce]=useState([...props.annoncements]);
     useEffect(() => {
       let items=props.annoncements;
        items=[...items.map(a=>({...a,height:Math.floor(100/items.length)+1}))];
        
         chengeAnnonce([...items]);
-        console.log('a',items);
     }, [props.annoncements]);
     const changeActiveStatus=(index)=>{
 

@@ -10,16 +10,13 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 ];
 
 const NewsSlider = (props) => {
-  console.log('slides', props);
   const formattedDate = (date) => (date.getUTCDate() + " " + monthNames[date.getMonth()] + ', ' + date.getUTCFullYear());
   const [autoplay, setAutoplay] = useState(true);
   const [selectedSlide, setSelectedSlide] = useState(0);
   const [sliderInterval, setSliderInterval] = useState(1);
   useEffect(() => {
-    let interv = (!props.interval || props.interval == 0) ? 2 : props.interval;
-    console.log('interv1', interv);
+    let interv = (!props.interval || props.interval == 0) ? 2 : props.interval; 
     interv = interv * 1000;
-    console.log('interv', interv);
     setSliderInterval(interv);
   }, [props.interval]);
   return (
@@ -52,9 +49,9 @@ const NewsSlider = (props) => {
         {
           props.newsList.map((a, index) => {
 
-            return (<div className='image' key={index}>
+            return (<div className='image' key={index} style={{backgroundImage:`url(${a.bannerImageUrl}`}}>
 
-              <img src={a.bannerImageUrl} alt="mobile1" />
+               {/* <img src={a.bannerImageUrl} alt="mobile1" /> */}
               <div className="legend">
                 <div>{a.topicHeader}</div>
                 <div style={{ fontSize: '18px', fontWeight: 'bold', textTransform: 'uppercase' }}>{a.title}</div>
