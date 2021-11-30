@@ -55,7 +55,7 @@ const NewsSlider = (props) => {
               <div className="legend">
                 <div>{a.topicHeader}</div>
                 <div style={{ fontSize: '18px', fontWeight: 'bold', textTransform: 'uppercase' }}>{a.title}</div>
-                <div>{formattedDate(new Date(a.created))}  {a.authorTitle}</div>
+                <div>{formattedDate(new Date(a.issueDate))}  {a.authorTitle}</div>
                 <div style={{ marginTop: '10px' }}><a href={a.url} target="_blank" data-interception="off" style={{ color: 'inherit', textDecoration: 'none' }}>Read more ...</a></div>
               </div>
             </div>)

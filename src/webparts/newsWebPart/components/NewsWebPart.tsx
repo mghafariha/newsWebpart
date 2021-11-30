@@ -34,11 +34,11 @@ export default class NewsWebPart extends React.Component<INewsWebPartProps, INew
     const r = await web();
 
     //AuthorId ,BannerImageUrl ,Created,Title,SliderDisplayOrder,Description,OData__TopicHeader,FirstPublishedDate
-    let newsItems = await web.lists.getByTitle('Site Pages').items.filter('SliderDisplayOrder ne 0 and SliderDisplayOrder ne null').select(`AuthorId,Author/Title,BannerImageUrl ,Created,Title,SliderDisplayOrder,FirstPublishedDate,OData__TopicHeader,FileLeafRef`).expand(`Author`).orderBy("SliderDisplayOrder", true).top(this.props.numberOfDisplayNews).get();
-    newsItems = newsItems.sort((a, b) => (a.SliderDisplayOrder > b.SliderDisplayOrder ? 1 : -1));
+    let newsItems = await web.lists.getByTitle('Site Pages').items.filter('SliderDisplayOrder ne 0 and SliderDisplayOrder ne null').select(`AuthorId,Author/Title,BannerImageUrl,IssueDate,Created,Title,SliderDisplayOrder,FirstPublishedDate,OData__TopicHeader,FileLeafRef`).expand(`Author`).orderBy("IssueDate", false).top(this.props.numberOfDisplayNews).get();
+    newsItems = newsItems.sort((a, b) => (a.IssueDate > b.IssueDate ? -1 : 1));
    
     const img=newsItems[0]['BannerImageUrl']['Url'];
-    const news = newsItems.map((a) => ({ title: a.Title, bannerImageUrl:a.BannerImageUrl.Url.indexOf('/thumbnails/')==-1? `${a.BannerImageUrl.Url}&resolution=6`:`${a['BannerImageUrl']['Url'].split("file=")[0].substring(0,a['BannerImageUrl']['Url'].split("file=")[0].indexOf('/thumbnails/'))+ "/" +a['BannerImageUrl']['Url'].split("file=")[1]}`, authorTitle: a.Author.Title, created: a.FirstPublishedDate, sliderDisplayOrder: a.SliderDisplayOrder, topicHeader: a.OData__TopicHeader, url: `${this.props.newsSiteUrl}/SitePages/${a.FileLeafRef}` })) as INews[]
+    const news = newsItems.map((a) => ({ title: a.Title,issueDate:a.IssueDate, bannerImageUrl:a.BannerImageUrl.Url.indexOf('/thumbnails/')==-1? `${a.BannerImageUrl.Url}&resolution=6`:`${a['BannerImageUrl']['Url'].split("file=")[0].substring(0,a['BannerImageUrl']['Url'].split("file=")[0].indexOf('/thumbnails/'))+ "/" +a['BannerImageUrl']['Url'].split("file=")[1]}`, authorTitle: a.Author.Title, created: a.FirstPublishedDate, sliderDisplayOrder: a.SliderDisplayOrder, topicHeader: a.OData__TopicHeader, url: `${this.props.newsSiteUrl}/SitePages/${a.FileLeafRef}` })) as INews[]
     console.log('dddd',news);
     this.setState({ ...this.state, newsList: news });
     //

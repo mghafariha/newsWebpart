@@ -6,5 +6,6 @@ export interface INews{
     title:string ;
     sliderDisplayOrder:number;
     topicHeader:string;
-    url:string
+    url:string;
+    issueDate:Date;
   }
